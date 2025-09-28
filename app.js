@@ -133,76 +133,76 @@ document.addEventListener('DOMContentLoaded', function() {
     const successMessage = document.getElementById('success-message');
     
     if (contactForm && successMessage) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
-            
-            // Basic validation
-            if (!name || !email || !phone || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-            
-            // Phone validation (basic)
-            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
-            if (!phoneRegex.test(phone)) {
-                alert('Please enter a valid phone number.');
-                return;
-            }
-            
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                const originalText = submitBtn.textContent;
-                submitBtn.classList.add('loading');
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Sending...';
-                
-                // Simulate form submission - FIXED
-                setTimeout(() => {
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Remove loading state
-                    submitBtn.classList.remove('loading');
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                    
-                    // Show success message - FIXED
-                    successMessage.classList.remove('hidden');
-                    successMessage.style.display = 'block';
-                    successMessage.style.opacity = '1';
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.style.opacity = '0';
-                        setTimeout(() => {
-                            successMessage.classList.add('hidden');
-                            successMessage.style.display = 'none';
-                        }, 300);
-                    }, 5000);
-                    
-                }, 1000);
-            }
+            // contactForm.addEventListener('submit', function(e) {
+            //     e.preventDefault();
+            //     
+            //     // Get form data
+            //     const formData = new FormData(contactForm);
+            //     const name = formData.get('name');
+            //     const email = formData.get('email');
+            //     const phone = formData.get('phone');
+            //     const message = formData.get('message');
+            //     
+            //     // Basic validation
+            //     if (!name || !email || !phone || !message) {
+            //         alert('Please fill in all required fields.');
+            //         return;
+            //     }
+            //     
+            //     // Email validation
+            //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            //     if (!emailRegex.test(email)) {
+            //         alert('Please enter a valid email address.');
+            //         return;
+            //     }
+            //     
+            //     // Phone validation (basic)
+            //     const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+            //     if (!phoneRegex.test(phone)) {
+            //         alert('Please enter a valid phone number.');
+            //         return;
+            //     }
+            //     
+            //     // Show loading state
+            //     const submitBtn = contactForm.querySelector('button[type="submit"]');
+            //     if (submitBtn) {
+            //         const originalText = submitBtn.textContent;
+            //         submitBtn.classList.add('loading');
+            //         submitBtn.disabled = true;
+            //         submitBtn.textContent = 'Sending...';
+            //         
+            //         // Simulate form submission - FIXED
+            //         setTimeout(() => {
+            //             // Reset form
+            //             contactForm.reset();
+            //             
+            //             // Remove loading state
+            //             submitBtn.classList.remove('loading');
+            //             submitBtn.disabled = false;
+            //             submitBtn.textContent = originalText;
+            //             
+            //             // Show success message - FIXED
+            //             successMessage.classList.remove('hidden');
+            //             successMessage.style.display = 'block';
+            //             successMessage.style.opacity = '1';
+            //             
+            //             // Scroll to success message
+            //             successMessage.scrollIntoView({ 
+            //                 behavior: 'smooth', 
+            //                 block: 'center' 
+            //             });
+            //             
+            //             // Hide success message after 5 seconds
+            //             setTimeout(() => {
+            //                 successMessage.style.opacity = '0';
+            //                 setTimeout(() => {
+            //                     successMessage.classList.add('hidden');
+            //                     successMessage.style.display = 'none';
+            //                 }, 300);
+            //             }, 5000);
+            //             
+            //         }, 1000);
+            //     }
         });
     }
 
